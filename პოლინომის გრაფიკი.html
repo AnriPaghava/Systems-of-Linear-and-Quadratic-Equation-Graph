@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>პოლინომიის გამომთვლელი</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <style>
+            canvas {
+                border: 5px solid black; 
+            }
+        </style>
+    </head> 
+    <body>
+        <div class="box1">
+            <h1>პოლინომის გრაფიკის გამომთვლელი</h1>
+            <h2>შეტანა</h2>
+
+            <div id="showEqu"></div>
+    
+            <p>პირველი ტოლობა: y = ax + b</p>
+    
+            <p>
+                <div id="input1">
+                    <label>a:  </label>
+                    <input id="a1" type="number">
+    
+                    <label>b:  </label>
+                    <input id="b1" type="number">
+    
+                </div>
+            </p>
+    
+            <p>მეორე ტოლობა: y = ax + b</p>
+    
+            <p>
+                <div id="input2">
+                    <label>a:  </label>
+                    <input id="a2" type="number">
+    
+                    <label>b:  </label>
+                    <input id="b2" type="number">
+                </div>
+            </p>
+    
+            <p>
+                <button class="li1 projectsbutton" onclick="run()" id='gButt'>გამოთვლა</button>
+            </p>
+        </div>
+        
+        <canvas id="canvas" height="1000px" width="1000px"></canvas>
+
+        
+    </body>
+    <script>
+        var runclick=0;
+
+        function collectConstants(aID, bID) {
+            let a = parseInt( document.getElementById(aID).value );
+            let b = parseInt( document.getElementById(bID).value );
+
+            return [a, b];
+
+        }
+
+        function calcQuad(lin1, lin2, ident) {
+
+            let pnt = document.getElementById(ident);
+            let can = pnt.getContext('2d');
+
+
+            let scale = 200;
+            let canvasSize = parseInt(pnt.getAttribute('width'));
+            let shift = canvasSize/2;
+
+            can.fillStyle = '#000080';
+
+            for(i = 1; i < canvasSize; i = i + 1){
+                let x = i - shift;
+                let y = -1*(lin1[0]*x + lin1[1])*(lin2[0]*x + lin2[1]) + shift;
+                can.fillRect(i, y, 2, 2);
+                console.log("got called", y);
+            }
+
+            
+        }
+        
+        function axisLines(cx, cy, ident) {
+            let pnt = document.getElementById(ident);
+            let can = pnt.getContext('2d');
+            let canvasSize = parseInt(pnt.getAttribute('width'));
+
+            can.strokeStyle = '#000000';
+            can.moveTo(0, cy);
+            can.lineTo(canvasSize, cy);
+            can.stroke();
+
+            can.moveTo(cx, 0);
+            can.lineTo(cx, canvasSize);
+            can.stroke();
+
+        }
+
+        function basicLine(a, b, ident) {
+            let pnt = document.getElementById(ident);
+            let can = pnt.getContext('2d');
+            let canvasSize = parseInt(pnt.getAttribute('width'));
+            let shift = canvasSize/2;
+            let scale = 100;
+
+            can.fillStyle = '#FF0000';
+
+            for (i = 1; i < canvasSize; i = i + 1) {
+                let x = i - shift;
+                let y = -a*x + b*scale + shift;
+                can.fillRect(i, y, 2, 2);
+            }
+        }
+
+        axisLines(500, 500, 'canvas');
+
+        function run(){
+            runclick += 1;
+            document.getElementById('gButt').innerHTML = 'გასუფთავება';
+
+            if(runclick == 2){        
+              location.reload();
+               run();
+             }
+            let eq1 = collectConstants('a1', 'b1', 'graph1');
+            let eq2 = collectConstants('a2', 'b2', 'graph2');
+            let san = eq1.concat(eq2);
+            let doom = san.every( function (e0){ return Number.isNaN(e0) !== true});
+            if (doom !== true) {
+                console.log("Weeding out the NaNs");
+                return
+            }
+
+            basicLine(eq1[0], eq1[1], 'canvas');
+            basicLine(eq2[0], eq2[1], 'canvas');
+
+            calcQuad(eq1, eq2, 'canvas');
+            
+        }
+
+       
+    
+        
+
+    </script>
+</html>

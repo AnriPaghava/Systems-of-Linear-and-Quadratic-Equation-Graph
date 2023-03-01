@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+.box1 {
+    border: 2px solid rgb(255, 255, 255);
+    text-align: center;
+    background-color: rgb(174, 225, 235);
+    margin: 50px;
+    border-radius: 20px; 
+    box-shadow: 0 19px 38px rgba(131, 60, 60, 0.3), 0 15px 12px rgba(0, 0, 0, .22);
+    font-family: 'Nova Flat', cursive;
+}
+
+.name_dis {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    text-decoration: none;
+    font-family: "BPG Banner QuadroSquare", sans-serif;
+}
+
+.container {
+    display: inline-block;
+    margin: auto;
+}
+.sub {
+    display: flex;
+}
+
+
+
+.title {
+    height: 40px;
+    font-size: 27px;
+    background-color: #b8b8f6;
+    margin: 0;
+    padding: 0 15px;
+    font-weight: bold;
+    font-family: "ALK Life", sans-serif;
+    text-align: center;
+}
+
+.textforbuttons{
+    text-align: justify;
+    font-family: "BPG ExtraSquare Mtavruli", sans-serif;
+    text-decoration: none;
+}
+.ul1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+li{
+    cursor: pointer;
+}
+.li1{
+    margin-right: 40px;
+    padding:8px 20px 8px 20px;
+    text-decoration: none;
+    text-transform:uppercase;
+    font-weight: bold;
+    width: 500px;
+    font-family:'Roboto',sans-serif;
+    transition: transform ease-in 0.2s, box-shadow ease-in 0.30s;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.5);
+}
+.li1:hover{
+    text-shadow: 0 0 2em rgb(0, 0, 0);
+    color:#ffffff;
+    border-color:#fa0000;
+    transition: 2000ms;
+}
+
+
+.li1.aboutusbutton{
+    background-color:rgb(255, 238, 0);
+}
+.li1.projectsbutton{
+    background-color:rgb(255, 8, 234);
+}
+
+#btn {
+    background: rgb(0, 209, 10);
+    height: 50px;
+    min-width: 100px;
+    border-radius: 10px;
+    color: rgb(196, 0, 0);
+    font-size: 40px;
+    position: relative;
+    transition: 1s;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 5px auto;
+    padding: 10px;
+    width: 45%;
+    
+    
+    display: block;
+  }
+  
+  #btn #circle {
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 50%;
+    color: black;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    
+    transition: 1500ms;
+  }
+  
+  #btn:hover {
+    background: rgb(220, 92, 224);
+    transition: 3000ms;
+  }
+  
+  #btn:hover #circle {
+    height: 50px;
+    width: 90%;
+    left: 0;
+    margin-left: 5%;
+    border-radius: 0;
+    border-bottom: 2px solid rgb(26, 3, 158);
+  }

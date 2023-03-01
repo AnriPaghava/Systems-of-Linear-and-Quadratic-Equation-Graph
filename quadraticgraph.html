@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <title></title>
+        <meta charset='UTF-8'>
+        <script src='script.js'></script>
+    </head>
+    <body>
+        <div class="box1">
+            <h1>შეიყვანეთ a, b, და c კოეფიციენტების მნიშვნელობები</h1>
+            <input id='a' type='number' step="1" min="-10" max="10" onclick='this.select()'> x&sup2 + <input id='b' type='number' min="-10" max="10" onclick='this.select()'>x + <input id='c' type='number' min="-10" max="10" onclick='this.select()'><br><br>
+            <button class="li1 projectsbutton" onclick='evalu8()' id='inpoot'>ამოხსნა</button>
+            <button  class="li1 aboutusbutton" onclick='graph()' id='gButt'>გრაფიკის აგება</button>
+        </div>
+       
+        <h4>დისკრიმინანტი</h4><p id='dScrim'></p><br>
+        <h4>ფესვების ტიპი</h4><p id='tor'></p><br>
+        <h4>ამონახსნი</h4><p id='root1'></p><p id='root2'></p>
+        <br>
+        
+        <canvas id="myCanvas" width="1000" height="1000" style="border:6px solid #c3c3c3;"></canvas>
+        <br>
+
+    </body>
+</html>
